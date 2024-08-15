@@ -48,19 +48,45 @@ class Tree {
     return this.root === null
   }
 
-  buildTreeFromObj(treeObj, currNode = null, depth = 0) {
+  buildTreeFromObj(treeObj) {
+    // this.buildTree(treeObj, 0)
+    // const node = new Node(treeObj.value, depth)
+    this.buildTree(this.root, treeObj, 0)
+
+    // if (this.isEmpty()) {
+    //   this.root = node
+    // } else {
+    //   if (!currNode.children) {
+    //     currNode.children = []
+    //   }
+    //   currNode.children.push(node)
+    // }
+    // if (treeObj.children) {
+    //   for (let child of treeObj.children) {
+    //     this.buildTreeFromObj(child, depth + 1)
+    //   }
+    // }
+  }
+
+  buildTree(root, treeObj, depth) {
+    console.log(depth + ' - ' + '  '.repeat(depth) + treeObj.value)
     const node = new Node(treeObj.value, depth)
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       this.root = node
-    } else {
-      if (!currNode.children) {
-        currNode.children = []
-      }
-      currNode.children.push(node)
     }
+    else {
+      if (!root.children) {
+        root.children = []
+      }
+      root.children.push(node)
+    }
+
+    this.root = node
     if (treeObj.children) {
-      for (let child of treeObj.children) {
-        this.buildTreeFromObj(child, depth + 1)
+      root.children = []
+      for (let i = 0; i < treeObj.children.length; i++) {
+        const child = treeObj.children[i]
+        this.buildTree(root.children[i], child, depth + 1)
       }
     }
   }
