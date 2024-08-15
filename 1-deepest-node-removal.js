@@ -15,28 +15,24 @@ const treeObj = {
   ],
 }
 
-function dispTreeObj(treeObj, depth) {
-  // console.log('depth:', depth)
+// dispTreeObj(treeObj)
+
+function dispTreeObj(treeObj, depth = 0) {
   console.log(depth + ' - ' + '  '.repeat(depth) + treeObj.value)
   if (treeObj.children) {
-    depth++
-    // console.log('  '.repeat(depth) + treeObj.value)
+    // depth++
     for (let child of treeObj.children) {
-      dispTreeObj(child, depth)
+      dispTreeObj(child, depth + 1)
     }
   }
-  // else {
-  //   console.log(depth + ' - ' + treeObj.value)
-  //   // console.log('  '.repeat(depth) + treeObj.value)
-  // }
 }
 
-dispTreeObj(treeObj, 0)
-
 class Node {
-  constructor(value) {
+  constructor(value, depth) {
     this.value = value
     this.children = null
+    this.parent = null
+    this.depth = depth
   }
   toString() {
     return this.value
@@ -50,6 +46,23 @@ class Tree {
 
   isEmpty() {
     return this.root === null
+  }
+
+  buildTreeFromObj(treeObj, currNode = null, depth = 0) {
+    const node = new Node(treeObj.value, depth)
+    if (this.isEmpty()) {
+      this.root = node
+    } else {
+      if (!currNode.children) {
+        currNode.children = []
+      }
+      currNode.children.push(node)
+    }
+    if (treeObj.children) {
+      for (let child of treeObj.children) {
+        this.buildTreeFromObj(child, depth + 1)
+      }
+    }
   }
 
   addNode(value) {
@@ -75,6 +88,9 @@ class Tree {
     }
   }
 }
+
+const tree = new Tree()
+tree.buildTreeFromObj(treeObj)
 
 // const tree = new Tree()
 // tree.addNode(new Node(5))
