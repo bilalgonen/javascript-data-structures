@@ -8,34 +8,36 @@ https://github.com/bilalgonen/javascript-data-structures/
 */
 
 function comp(a, b) {
+  let message = a + ' - ' + b
   let count = 0
+  let i = 0, j = 0
   // ABC AC
-  while (a.length > 0 || b.length > 0) {
+  while (i < a.length || j < b.length) {
     // First characters are same
-    if (a.charAt(0) === b.charAt(0)) {
-      a = a.substring(1)
-      b = b.substring(1)
+    if (a.charAt(i) === b.charAt(j)) {
+      i++
+      j++
     } else {
       count++
       // BC and ABC  ==> Remove from 2nd string fixes the issue
-      if (a.charAt(0) === b.charAt(1)) {
-        b = b.substring(1)
+      if (a.charAt(i) === b.charAt(j + 1)) {
+        j++
       }
       // ABC and BC  ==> Remove from 1st string fixes the issue
-      else if (a.charAt(1) === b.charAt(0)) {
-        a = a.substring(1)
+      else if (a.charAt(i + 1) === b.charAt(j)) {
+        i++
       }
       // XBC and YBC  ==> Replace first letter of any string fixes the issue
-      else if (a.charAt(1) === b.charAt(1)) {
-        a = a.substring(1)
-        b = b.substring(1)
+      else if (a.charAt(i + 1) === b.charAt(j + 1)) {
+        i++
+        j++
       }
     }
   }
-  return count < 2
+  return message + '   ' + (count < 2)
 }
 
-console.log('pale - ple', comp('pale', 'ple')) // true
-console.log('pales - pale', comp('pales', 'pale')) // true
-console.log('pale - bale', comp('pale', 'bale')) // true
-console.log('pale - bae', comp('pale', 'bae')) // false
+console.log(comp('pale', 'ple')) // true
+console.log(comp('pales', 'pale')) // true
+console.log(comp('pale', 'bale')) // true
+console.log(comp('pale', 'bae')) // false
