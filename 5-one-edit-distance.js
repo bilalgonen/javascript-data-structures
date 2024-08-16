@@ -1,3 +1,12 @@
+/*
+You are given 2 strings. You can use only 3 operators: Insert, Delete, Replace. Using only these three operations, if it is possible to make these two words the same to each other with at most one operation, your function should return true. Otherwise, returns false.
+
+I added this code to the links below:
+https://playcode.io/1973035
+https://github.com/bilalgonen/javascript-data-structures/blob/main/5-string-operation-count.js
+https://leetcode.com/problems/one-edit-distance/
+*/
+
 function comp(a, b) {
   let count = 0
   // ABC AC
