@@ -1,5 +1,5 @@
 function isAlive(matrix, x, y, isTarget = false) {
-  // console.log('x,y:', x, y)
+  console.log('x,y:', x, y)
   //Boundary case for matrix
   if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
     if (matrix[x][y] === 1) {
@@ -29,10 +29,6 @@ function isAlive(matrix, x, y, isTarget = false) {
         return true
       }
     }
-    // if (isAlive(matrix, x, y + 1)) return true //RIGHT
-    // if (isAlive(matrix, x + 1, y)) return true //DOWN
-    // if (isAlive(matrix, x, y - 1)) return true //LEFT
-    // if (isAlive(matrix, x - 1, y)) return true //TOP
   }
   return false
 }

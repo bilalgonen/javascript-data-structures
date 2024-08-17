@@ -44,7 +44,7 @@ console.log('pale - bale', comp('pale', 'bale')) // true
 console.log('pale - bae', comp('pale', 'bae')) // false
 ```
 
-Then, I realized that this algorithm is not very efficient. Because JavaScript Strings are immutable since once a string is created, it will receive a reference in the memory and its value will never change. This means that any operation on a string give a new string without mutating the main string. The algorithm below has better memery and time complexity. Instead of creating a new strings with substring method, it is better to traverse the strings by characters.
+Then, I realized that this algorithm is not very efficient. Because JavaScript Strings are immutable since once a string is created, it will receive a reference in the memory and its value will never change. This means that any operation on a string give a new string without mutating the main string. The algorithm below has better memory and time complexity. Instead of creating a new strings with substring method, it is better to traverse the strings by characters.
 
 ```javascript
 /*

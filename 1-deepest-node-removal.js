@@ -15,7 +15,7 @@ const treeObj = {
   ],
 }
 
-// dispTreeObj(treeObj)
+dispTreeObj(treeObj)
 
 function dispTreeObj(treeObj, depth = 0) {
   console.log(depth + ' - ' + '  '.repeat(depth) + treeObj.value)
@@ -115,8 +115,8 @@ class Tree {
   }
 }
 
-const tree = new Tree()
-tree.buildTreeFromObj(treeObj)
+// const tree = new Tree()
+// tree.buildTreeFromObj(treeObj)
 
 // const tree = new Tree()
 // tree.addNode(new Node(5))

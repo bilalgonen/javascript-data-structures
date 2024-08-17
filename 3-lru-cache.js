@@ -14,7 +14,7 @@ class LRU {
     return item
   }
 
-  set(key, val) {
+  put(key, val) {
     // refresh key
     if (this.cache.has(key)) this.cache.delete(key)
     // evict oldest
@@ -28,8 +28,8 @@ class LRU {
 }
 
 const cache = new LRU(2)
-cache.set(1, 'v:' + 1)
-cache.set(2, 'v:' + 2)
-cache.set(3, 'v:' + 3)
+cache.put(1, 'v:' + 1)
+cache.put(2, 'v:' + 2)
+cache.put(3, 'v:' + 3)
 console.log(cache)
 // console.log(cache.get(2))
